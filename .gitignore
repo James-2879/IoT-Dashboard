@@ -1,0 +1,7 @@
+.env
+www/photos/
+www/photos_compressed/
+Photos/
+scripts/
+.RData
+.Rhistory
