@@ -12,6 +12,7 @@ server <- function(input, output, session){
   ### Functions ###
   
   splash_image_timer <- reactiveTimer(10000) # in ms
+  cache_timer <- reactiveTimer(900000)
   
   # shinyjs::js$disableMenu("p2")
   # shinyjs::js$disableMenu("about")
@@ -75,6 +76,51 @@ server <- function(input, output, session){
     )
   })
   
+  ### audio
+  
+  observeEvent(input$vol_up, {
+    inputSweetAlert(inputId = "ssh_pass_vol_up",
+                    title = "Remote password required",
+                    input = "password",
+                    type = "warning"
+    )
+  })
+  
+  observeEvent(input$ssh_pass_vol_up, {
+    if (verifyPassword(Sys.getenv("SSH_PASS_HASH"), input$ssh_pass_vol_up)) {
+      # instead of below, I should use a key if the password entered matches the hash
+      system(str_glue("sshpass -p {input$ssh_pass_vol_up} ssh james@192.168.0.203 < scripts/volume_up.sh"))
+      sendSweetAlert(title = "Executed",
+                     type = "success",
+                     btn_labels = NA)
+      Sys.sleep(1)
+      closeSweetAlert()
+    }
+  })
+  
+  observeEvent(input$vol_down, {
+    inputSweetAlert(inputId = "ssh_pass_vol_down",
+                    title = "Remote password required",
+                    input = "password",
+                    type = "warning"
+    )
+  })
+  
+  observeEvent(input$ssh_pass_vol_down, {
+    if (verifyPassword(Sys.getenv("SSH_PASS_HASH"), input$ssh_pass_vol_down)) {
+      system(str_glue("sshpass -p {input$ssh_pass_vol_down} ssh james@192.168.0.203 < scripts/volume_down.sh"))
+      sendSweetAlert(title = "Executed",
+                     type = "success",
+                     btn_labels = NA)
+      Sys.sleep(1)
+      closeSweetAlert()
+    }
+  })
+  
+  
+  
+  
+  ###
   
   
   

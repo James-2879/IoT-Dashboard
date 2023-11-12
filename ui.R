@@ -141,7 +141,17 @@ ui <- dashboardPage(skin = "black",
                                         column(width = 5,
                                                textOutput(outputId = "status_dev_203")
                                         )
-                                      )
+                                      ),
+                                      actionBttn(inputId = "vol_down",
+                                                 label = "Decrease volume",
+                                                 size = "sm",
+                                                 style = "bordered",
+                                                 color = "royal"),
+                                      actionBttn(inputId = "vol_up",
+                                                 label = "Increase volume",
+                                                 size = "sm",
+                                                 style = "bordered",
+                                                 color = "royal")
                                   )
                                 )
                         ),
