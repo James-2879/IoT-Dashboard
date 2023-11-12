@@ -60,13 +60,13 @@ ui <- dashboardPage(skin = "black",
                                                             # add_busy_bar(color = "#0096FF", timeout = 400, height = "4px"),
                                                             menuItem("Sign in",
                                                                      tabName = "sign_in",
-                                                                     icon = icon("console",
+                                                                     icon = icon("log-in",
                                                                                  lib = "glyphicon"
                                                                      )
                                                             ),
                                                             menuItem("Panel 2",
                                                                      tabName = "p2",
-                                                                     icon = icon("console",
+                                                                     icon = icon("signal",
                                                                                  lib = "glyphicon"
                                                                      )
                                                             ),

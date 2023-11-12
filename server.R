@@ -47,7 +47,7 @@ server <- function(input, output, session){
     if (response_dev == 0) {
       output[[paste0("status_dev_", ui_identifier)]] <- renderText({"Device reachable"})
       output[[paste0("status_dev_", ui_identifier, "_symbol")]] <- renderImage({
-        list(src = "www/check-circle-fill.svg",
+        list(src = "www/check-circle-fill-green.jpg",
              alt = "check",
              height = 15)
       }, deleteFile = FALSE)
@@ -55,7 +55,7 @@ server <- function(input, output, session){
     } else if (response_dev == 1) {
       output[[paste0("status_dev_", ui_identifier)]] <- renderText({"Device unreachable"})
       output[[paste0("status_dev_", ui_identifier, "_symbol")]] <- renderImage({
-        list(src = "www/exclamation-circle-fill.svg",
+        list(src = "www/exclamation-circle-fill-red.jpg",
              alt = "check",
              height = 15)
       }, deleteFile = FALSE)

@@ -20,7 +20,8 @@ library(scrypt)
 
 # options(shiny.usecairo = T) #better graphics
 
-app_dir <- "/home/james/Documents/IoT-Dashboard/"
+app_dir <- "/home/james/Documents/IoT-Dashboard/" # local
+# app_dir <- "/srv/shiny-server/IoT-Dashboard/" # docker
 load_dot_env(file = paste0(app_dir, ".env"))
 
 
