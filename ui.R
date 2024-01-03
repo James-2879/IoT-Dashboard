@@ -104,55 +104,206 @@ ui <- dashboardPage(skin = "black",
                                                   placeholder = "username"
                                         ),
                                         passwordInput(inputId = "password",
-                                                  label = "Pass",
-                                                  placeholder = "password"
+                                                      label = "Pass",
+                                                      placeholder = "password"
                                         )
                                     )
                                   ),
                                 )
                         ),
                         tabItem(tabName = "p2",
-                                fluidRow(
-                                  box(width = 2,
-                                      title = "192.168.0.202",
-                                      style = "font-size:14px;",
-                                      collapsible = TRUE,
-                                      collapsed = FALSE,
-                                      fluidRow(
-                                        column(width = 1, style = "height:50px;",
-                                               imageOutput(outputId = "status_dev_202_symbol")
+                                # Desktop ----
+                                tags$div(style = "padding:10px",
+                                         fluidRow(
+                                           box(width = 4,
+                                               title = "Desktop Server (192.168.0.200)",
+                                               style = "font-size:14px;
+                                               padding-top:0px;",
+                                               collapsible = TRUE,
+                                               collapsed = FALSE,
+                                               fluidRow(
+                                                 tags$div(style = "height:1px !important;
+                                                          padding-left:15px;
+                                                          padding-top:0px",
+                                                          imageOutput(outputId = "status_dev_200_symbol")
+                                                 ),
+                                                 tags$div(style = "padding-left:40px;
+                                                          padding-bottom:10px",
+                                                          textOutput(outputId = "status_dev_200")
+                                                 )
                                                ),
-                                        column(width = 5,
-                                               textOutput(outputId = "status_dev_202")
+                                               tags$div(style = "padding-left:15px;",
+                                                        fluidRow(
+                                                          actionBttn(inputId = "boot_200",
+                                                                     label = "Boot",
+                                                                     style = "bordered",
+                                                                     size = "sm",
+                                                                     color = "primary",
+                                                                     icon = icon("off",
+                                                                                 lib = "glyphicon")
+                                                          ),
+                                                          actionBttn(inputId = "reboot_200",
+                                                                     label = "Reboot",
+                                                                     style = "bordered",
+                                                                     size = "sm",
+                                                                     color = "warning",
+                                                                     icon = icon("repeat",
+                                                                                 lib = "glyphicon")
+                                                          ),
+                                                          actionBttn(inputId = "shutdown_200",
+                                                                     label = "Shutdown",
+                                                                     style = "bordered",
+                                                                     size = "sm",
+                                                                     color = "danger",
+                                                                     icon = icon("off",
+                                                                                 lib = "glyphicon")
+                                                          )
+                                                        )
+                                               ),
+                                               tags$div(style = "padding-left:15px;
+                                                 padding-top:10px;",
+                                                        fluidRow(
+                                                          actionBttn(inputId = "connect_power_200",
+                                                                     label = "Connect power",
+                                                                     style = "simple",
+                                                                     size = "sm",
+                                                                     color = "success",
+                                                                     icon = icon("ok-circle",
+                                                                                 lib = "glyphicon")
+                                                          ),
+                                                          
+                                                          actionBttn(inputId = "disconnect_power_200",
+                                                                     label = "Disconnect power",
+                                                                     style = "simple",
+                                                                     size = "sm",
+                                                                     color = "danger",
+                                                                     icon = icon("remove-circle",
+                                                                                 lib = "glyphicon")
+                                                          )
+                                                        )
                                                )
-                                      )
-                                  )
-                                ),
-                                fluidRow(
-                                  box(width = 2,
-                                      title = "192.168.0.203",
-                                      style = "font-size:14px;",
-                                      collapsible = TRUE,
-                                      collapsed = FALSE,
-                                      fluidRow(
-                                        column(width = 1, style = "height:50px;",
-                                               imageOutput(outputId = "status_dev_203_symbol")
-                                        ),
-                                        column(width = 5,
-                                               textOutput(outputId = "status_dev_203")
-                                        )
-                                      ),
-                                      actionBttn(inputId = "vol_down",
-                                                 label = "Decrease volume",
-                                                 size = "sm",
-                                                 style = "bordered",
-                                                 color = "royal"),
-                                      actionBttn(inputId = "vol_up",
-                                                 label = "Increase volume",
-                                                 size = "sm",
-                                                 style = "bordered",
-                                                 color = "royal")
-                                  )
+                                           )
+                                         ),
+                                         fluidRow(
+                                           box(width = 4,
+                                               title = "Pi 4 Server (192.168.0.202)",
+                                               style = "font-size:14px;
+                                               padding-top:0px;",
+                                               collapsible = TRUE,
+                                               collapsed = FALSE,
+                                               fluidRow(
+                                                 tags$div(style = "height:1px !important;
+                                                          padding-left:15px;
+                                                          padding-top:0px",
+                                                          imageOutput(outputId = "status_dev_202_symbol")
+                                                 ),
+                                                 tags$div(style = "padding-left:40px;
+                                                          padding-bottom:10px",
+                                                          textOutput(outputId = "status_dev_202")
+                                                 )
+                                               ),
+                                               tags$div(style = "padding-left:15px;
+                                                 padding-top:10px;
+                                                        padding-bottom:10px;",
+                                                        fluidRow(
+                                                          actionBttn(inputId = "reload_vpn_202",
+                                                                     label = "Reload VPN",
+                                                                     style = "bordered",
+                                                                     size = "sm",
+                                                                     color = "primary",
+                                                                     icon = icon("cloud",
+                                                                                 lib = "glyphicon")
+                                                          )
+                                                        )
+                                               ),
+                                               tags$div(style = "padding-left:15px;",
+                                                        fluidRow(
+                                                          actionBttn(inputId = "reboot_202",
+                                                                     label = "Reboot",
+                                                                     style = "bordered",
+                                                                     size = "sm",
+                                                                     color = "warning",
+                                                                     icon = icon("repeat",
+                                                                                 lib = "glyphicon")
+                                                          ),
+                                                          actionBttn(inputId = "shutdown_202",
+                                                                     label = "Shutdown",
+                                                                     style = "bordered",
+                                                                     size = "sm",
+                                                                     color = "danger",
+                                                                     icon = icon("off",
+                                                                                 lib = "glyphicon")
+                                                          )
+                                                        )
+                                               )
+                                           )
+                                         ),
+                                         fluidRow(
+                                           box(width = 4,
+                                               title = "Pi 2 Server (192.168.0.203)",
+                                               # maybe put IPs in a tooltip
+                                               style = "font-size:14px;
+                                               padding-top:0px;",
+                                               collapsible = TRUE,
+                                               collapsed = FALSE,
+                                               fluidRow(
+                                                 tags$div(style = "height:1px !important;
+                                                          padding-left:15px;
+                                                          padding-top:0px",
+                                                          imageOutput(outputId = "status_dev_203_symbol")
+                                                 ),
+                                                 tags$div(style = "padding-left:40px;
+                                                          padding-bottom:10px",
+                                                          textOutput(outputId = "status_dev_203")
+                                                 )
+                                               ),
+                                               tags$div(style = "padding-left:15px;
+                                                 padding-top:10px;
+                                                        padding-bottom:10px;",
+                                                        fluidRow(
+                                                          actionBttn(inputId = "reload_vpn_203",
+                                                                     label = "Reload VPN",
+                                                                     style = "bordered",
+                                                                     size = "sm",
+                                                                     color = "primary",
+                                                                     icon = icon("cloud",
+                                                                                 lib = "glyphicon")
+                                                          )
+                                                        )
+                                               ),
+                                               tags$div(style = "padding-left:15px;
+                                                        padding-bottom:10px;",
+                                                        fluidRow(
+                                                          actionBttn(inputId = "reboot_203",
+                                                                     label = "Reboot",
+                                                                     style = "bordered",
+                                                                     size = "sm",
+                                                                     color = "warning",
+                                                                     icon = icon("repeat",
+                                                                                 lib = "glyphicon")
+                                                          ),
+                                                          actionBttn(inputId = "shutdown_203",
+                                                                     label = "Shutdown",
+                                                                     style = "bordered",
+                                                                     size = "sm",
+                                                                     color = "danger",
+                                                                     icon = icon("off",
+                                                                                 lib = "glyphicon")
+                                                          )
+                                                        )
+                                               ),
+                                               actionBttn(inputId = "vol_down",
+                                                          label = "Decrease volume",
+                                                          size = "sm",
+                                                          style = "bordered",
+                                                          color = "royal"),
+                                               actionBttn(inputId = "vol_up",
+                                                          label = "Increase volume",
+                                                          size = "sm",
+                                                          style = "bordered",
+                                                          color = "royal")
+                                           )
+                                         )
                                 )
                         ),
                         tabItem(tabName = "about",
@@ -168,7 +319,7 @@ ui <- dashboardPage(skin = "black",
                                                        )
                                                 )
                                          )
-
+                                         
                                 )
                         )
                       )

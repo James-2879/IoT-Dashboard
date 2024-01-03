@@ -76,6 +76,53 @@ server <- function(input, output, session){
     )
   })
   
+  observe(priority = -1000, {
+    check_device(ip_address = "192.168.0.200",
+                 ui_identifier = "200"
+    )
+  })
+  
+  # reboot stuff
+  
+  observeEvent(input$reboot_202, {
+    inputSweetAlert(inputId = "confirm_reboot_202",
+                    title = "Caution",
+                    text = "This device should usually remain on, enter pin to continue...",
+                    input = "password",
+                    type = "warning"
+    )
+  })
+  observeEvent(input$reboot_203, {
+    inputSweetAlert(inputId = "confirm_reboot_203",
+                    title = "Caution",
+                    text = "This device should usually remain on, enter pin to continue...",
+                    input = "password",
+                    type = "warning"
+    )
+  })
+ 
+   # shutdown stuff
+  
+  observeEvent(input$shutdown_202, {
+    inputSweetAlert(inputId = "confirm_shutdown_202",
+                    title = "Caution",
+                    text = "(1) This device cannot be powered back on without physical access.
+                    (2) This device runs this web service, continuing will terminate the service.
+                    Enter pin to proceed.",
+                    input = "password",
+                    type = "error"
+    )
+  })
+  observeEvent(input$shutdown_203, {
+    inputSweetAlert(inputId = "confirm_shutdown_203",
+                    title = "Caution",
+                    text = "This device cannot be powered back on without physical access.
+                    Enter pin to proceed.",
+                    input = "password",
+                    type = "warning"
+    )
+  })
+  
   ### audio
   
   observeEvent(input$vol_up, {

@@ -24,6 +24,9 @@ app_dir <- "/home/james/Documents/IoT-Dashboard/" # local
 # app_dir <- "/srv/shiny-server/IoT-Dashboard/" # docker
 load_dot_env(file = paste0(app_dir, ".env"))
 
+# have a peer list on the about page
+# nordvpn meshnet peer list > file
+
 
 ### Metadata ###
 
